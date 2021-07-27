@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import java.util.*
 
 interface RecipeApi {
-    @GET("/recipes.json")
+    @GET("recipes.json")
     fun allRecipes(): Observable<List<Recipe>>
 }

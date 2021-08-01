@@ -24,7 +24,5 @@ class MainActivity : AppCompatActivity() {
 
         //todo add hilt dependency injection
         //recyclerview and update UI
-        val fragment = RecipesFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit()
     }
 }

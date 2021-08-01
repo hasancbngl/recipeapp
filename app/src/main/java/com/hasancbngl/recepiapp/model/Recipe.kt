@@ -3,9 +3,9 @@ package com.hasancbngl.recepiapp.model
 data class Recipe(
     val name: String,
     val ingredients: List<Ingredient>,
-    val steps: List<String>,
-    val timers: List<String>,
-    val imageUrl: String,
+    val steps: ArrayList<String>,
+    val timers: ArrayList<Int>,
+    val imageURL: String,
     val originalUrl: String
 ) {
 }

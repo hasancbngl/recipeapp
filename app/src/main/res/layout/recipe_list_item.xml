@@ -7,8 +7,9 @@
 
     <ImageView
         android:id="@+id/recipeContainerImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="12dp"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,22 +18,37 @@
 
     <TextView
         android:id="@+id/recipeTitleTextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/recipeContainerImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        app:layout_constraintTop_toTopOf="@id/recipeContainerImageView" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/ingredientsAmountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@id/recipeTitleTextview"
+        app:layout_constraintTop_toBottomOf="@id/recipeTitleTextview" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/cookingTimeTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@id/ingredientsAmountTextView"
+        app:layout_constraintTop_toBottomOf="@id/ingredientsAmountTextView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

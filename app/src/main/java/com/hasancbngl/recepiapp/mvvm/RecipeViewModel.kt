@@ -9,7 +9,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class RecipeViewModel : ViewModel() {
-    val list = MutableLiveData<List<Recipe>>()
+    val list = MutableLiveData<ArrayList<Recipe>>()
     private val client = RecipeClient
     private val repository = RecipeRepository(client)
     private val disposable = CompositeDisposable()
@@ -21,7 +21,7 @@ class RecipeViewModel : ViewModel() {
         )
     }
 
-    private fun onRecipeLoaded(recipe: List<Recipe>) {
+    private fun onRecipeLoaded(recipe: ArrayList<Recipe>) {
         list.postValue(recipe)
     }
 

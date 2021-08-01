@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.hasancbngl.recepiapp.R
 import com.hasancbngl.recepiapp.mvvm.RecipeViewModel
+import kotlinx.android.synthetic.main.fragment_recipes.*
 
 class RecipesFragment : Fragment() {
 
@@ -28,5 +29,13 @@ class RecipesFragment : Fragment() {
         recipeViewModel.list.observe(
             requireActivity(),
             { recipes -> Log.i(TAG, "onViewCreated: $recipes") })
+
+        initRecycler()
+    }
+
+    private fun initRecycler() {
+        allRecipesRecyclerview.apply {
+
+        }
     }
 }

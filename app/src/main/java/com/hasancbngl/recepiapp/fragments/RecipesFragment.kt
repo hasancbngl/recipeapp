@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hasancbngl.recepiapp.R
 import com.hasancbngl.recepiapp.adapter.AllRecipesAdapter
@@ -14,7 +15,7 @@ import com.hasancbngl.recepiapp.model.Recipe
 import com.hasancbngl.recepiapp.mvvm.RecipeViewModel
 import kotlinx.android.synthetic.main.fragment_recipes.*
 
-class RecipesFragment : Fragment() {
+class RecipesFragment : Fragment(), AllRecipesAdapter.OnRecipeClicked {
 
     private val recipeViewModel: RecipeViewModel by activityViewModels()
     private val TAG = "RecipesFragment"
@@ -40,12 +41,17 @@ class RecipesFragment : Fragment() {
 
     private fun initRecycler(recipes: ArrayList<Recipe>) {
         allRecipesRecyclerview.apply {
-            recipeAdapter = AllRecipesAdapter()
+            recipeAdapter = AllRecipesAdapter(this@RecipesFragment)
             val manager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             layoutManager = manager
             adapter = recipeAdapter
         }
         recipeAdapter.updateList(recipes)
+    }
+
+    override fun onRecipeClicked(recipe: Recipe) {
+        recipeViewModel.updateChosenRecipe(recipe)
+        findNavController().navigate(R.id.action_recipesFragment_to_recipeDetailFragment)
     }
 }

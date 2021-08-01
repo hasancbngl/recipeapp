@@ -46,6 +46,10 @@ class AllRecipesAdapter(private val listener: OnRecipeClicked) :
             }
         }
 
+        init {
+            view.container.setOnClickListener(this)
+        }
+
         override fun onClick(v: View?) {
             val position = adapterPosition
             listener.onRecipeClicked(recipeList[position])

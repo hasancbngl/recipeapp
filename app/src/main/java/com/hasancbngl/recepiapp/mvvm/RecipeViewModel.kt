@@ -13,12 +13,19 @@ class RecipeViewModel : ViewModel() {
     private val client = RecipeClient
     private val repository = RecipeRepository(client)
     private val disposable = CompositeDisposable()
+    var recipe = MutableLiveData<Recipe>()
+
+    fun getClickedRecipe() = recipe
 
     fun getRecipes() {
         disposable.add(
             repository.getRecipes().allRecipes().subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.newThread()).subscribe(this::onRecipeLoaded, this::onError)
         )
+    }
+
+    fun updateChosenRecipe(recipe: Recipe) {
+        this.recipe.postValue(recipe)
     }
 
     private fun onRecipeLoaded(recipe: ArrayList<Recipe>) {

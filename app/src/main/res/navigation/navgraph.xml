@@ -18,5 +18,9 @@
         android:id="@+id/recipeDetailFragment"
         android:name="com.hasancbngl.recepiapp.fragments.RecipeDetailFragment"
         android:label="fragment_recipe_detail"
-        tools:layout="@layout/fragment_recipe_detail" />
+        tools:layout="@layout/fragment_recipe_detail" >
+        <action
+            android:id="@+id/action_recipeDetailFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </fragment>
 </navigation>

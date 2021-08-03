@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.bumptech.glide.Glide
 import com.hasancbngl.recepiapp.R
 import com.hasancbngl.recepiapp.mvvm.RecipeViewModel
+import kotlinx.android.synthetic.main.fragment_recipe_detail.*
 
 class RecipeDetailFragment : Fragment() {
 
@@ -25,10 +27,9 @@ class RecipeDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recipeViewModel.getClickedRecipe().observe(requireActivity(), { recipe ->
-            Log.i(
-                TAG,
-                "onViewCreated: $recipe"
-            )
+            run {
+                Glide.with(this).load(recipe.imageURL).into(imageView)
+            }
         })
     }
 }

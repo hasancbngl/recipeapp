@@ -7,14 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.hasancbngl.recepiapp.R
+import com.hasancbngl.recepiapp.adapter.IngredientsAdapter
+import com.hasancbngl.recepiapp.adapter.InstructionsAdapter
+import com.hasancbngl.recepiapp.model.Recipe
 import com.hasancbngl.recepiapp.mvvm.RecipeViewModel
 import kotlinx.android.synthetic.main.fragment_recipe_detail.*
 
 class RecipeDetailFragment : Fragment() {
 
     private val recipeViewModel: RecipeViewModel by activityViewModels()
+    private lateinit var ingredientsAdapter: IngredientsAdapter
+    private lateinit var instructionsAdapter: InstructionsAdapter
     private val TAG = "RecipeDetailFragment"
 
     override fun onCreateView(
@@ -29,7 +35,27 @@ class RecipeDetailFragment : Fragment() {
         recipeViewModel.getClickedRecipe().observe(requireActivity(), { recipe ->
             run {
                 Glide.with(this).load(recipe.imageURL).into(imageView)
+                initRecyclers(recipe)
+                ingredientsTitle.text = getString(R.string.ingredients, recipe.ingredients.size)
             }
         })
+    }
+
+    private fun initRecyclers(recipe: Recipe) {
+        ingredientsRecycler.apply {
+            ingredientsAdapter = IngredientsAdapter()
+            val manager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            layoutManager = manager
+            adapter = ingredientsAdapter
+        }
+        ingredientsAdapter.updateList(recipe.ingredients)
+
+        instrucitonsRecycler.apply {
+            instructionsAdapter = InstructionsAdapter()
+            val manager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            layoutManager = manager
+            adapter = instructionsAdapter
+        }
+        instructionsAdapter.updateInstructions(recipe.steps)
     }
 }

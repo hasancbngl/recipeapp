@@ -35,4 +35,8 @@ class IngredientsAdapter : RecyclerView.Adapter<IngredientsAdapter.ViewHolder>()
             }
         }
     }
+
+    fun updateList(data : ArrayList<Ingredient>) {
+        list = data
+    }
 }

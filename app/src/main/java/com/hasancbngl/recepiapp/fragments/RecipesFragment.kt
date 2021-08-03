@@ -24,7 +24,7 @@ class RecipesFragment : Fragment(), AllRecipesAdapter.OnRecipeClicked {
     private val recipeViewModel: RecipeViewModel by activityViewModels()
     private val TAG = "RecipesFragment"
     private lateinit var recipeAdapter: AllRecipesAdapter
-    private lateinit var mActivity : FragmentActivity
+    private lateinit var mActivity: FragmentActivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +59,6 @@ class RecipesFragment : Fragment(), AllRecipesAdapter.OnRecipeClicked {
         }
         recipeAdapter.updateList(recipes)
     }
-
 
 
     override fun onAttach(context: Context) {

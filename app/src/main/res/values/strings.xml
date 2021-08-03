@@ -5,6 +5,6 @@
     <string name="todo">todo</string>
     <string name="ingredientsAmount">%1$d ingridients</string>
     <string name="cooking_time">%1$d minutes</string>
-    <string name="ingredients">Ingredients: %1$s</string>
+    <string name="ingredients">Ingredients: %1$d</string>
     <string name="instructions">instructions</string>
 </resources>

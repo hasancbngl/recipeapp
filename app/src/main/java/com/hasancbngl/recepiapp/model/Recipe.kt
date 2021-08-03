@@ -7,5 +7,4 @@ data class Recipe(
     val timers: ArrayList<Int>,
     val imageURL: String,
     val originalUrl: String
-) {
-}
+)

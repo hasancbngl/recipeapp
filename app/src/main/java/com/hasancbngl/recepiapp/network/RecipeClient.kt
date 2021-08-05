@@ -13,7 +13,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ActivityComponent::class)
 class RecipeClient @Inject constructor() {
-    private val BASE_URL = "http://mobile.asosservices.com/sampleapifortest/"
+    private val BASE_URL = "https://mobile.asosservices.com/sampleapifortest/"
 
     @Provides
     @Singleton

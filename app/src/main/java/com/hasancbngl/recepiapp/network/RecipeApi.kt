@@ -9,5 +9,5 @@ import javax.inject.Inject
 
 interface RecipeApi {
     @GET("recipes.json")
-    fun allRecipes(): Observable<ArrayList<Recipe>>
+    fun allRecipes(): Observable<List<Recipe>>
 }

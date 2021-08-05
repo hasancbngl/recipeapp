@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.recipe_list_item.view.*
 class AllRecipesAdapter(private val listener: OnRecipeClicked) :
     RecyclerView.Adapter<AllRecipesAdapter.ViewHolder>() {
 
-    private var recipeList = ArrayList<Recipe>()
+    private var recipeList = emptyList<Recipe>()
     private val TAG = "AllRecipesAdapter"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -56,7 +56,7 @@ class AllRecipesAdapter(private val listener: OnRecipeClicked) :
         }
     }
 
-    fun updateList(list: ArrayList<Recipe>) {
+    fun updateList(list: List<Recipe>) {
         recipeList = list
     }
 

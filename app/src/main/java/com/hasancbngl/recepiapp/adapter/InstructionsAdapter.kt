@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.instructions_list_item.view.*
 class InstructionsAdapter : RecyclerView.Adapter<InstructionsAdapter.ViewHolder>() {
 
     private val TAG = "InstructionsAdapter"
-    private var instructions = ArrayList<String>()
+    private var instructions = emptyList<String>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -31,7 +31,7 @@ class InstructionsAdapter : RecyclerView.Adapter<InstructionsAdapter.ViewHolder>
         }
     }
 
-    fun updateInstructions(data: ArrayList<String>) {
+    fun updateInstructions(data: List<String>) {
         instructions = data
     }
 }

@@ -51,7 +51,7 @@ class RecipesFragment : Fragment(), AllRecipesAdapter.OnRecipeClicked {
             })
     }
 
-    private fun initRecycler(recipes: ArrayList<Recipe>) {
+    private fun initRecycler(recipes: List<Recipe>) {
         allRecipesRecyclerview.apply {
             recipeAdapter = AllRecipesAdapter(this@RecipesFragment)
             val manager =

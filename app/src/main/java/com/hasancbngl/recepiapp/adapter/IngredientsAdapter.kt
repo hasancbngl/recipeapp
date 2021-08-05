@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hasancbngl.recepiapp.R
 import com.hasancbngl.recepiapp.model.Ingredient
+import com.hasancbngl.recepiapp.model.Recipe
 import kotlinx.android.synthetic.main.ingredient_list_item.view.*
 
 class IngredientsAdapter : RecyclerView.Adapter<IngredientsAdapter.ViewHolder>() {
 
     private val TAG = "IngredientsAdapter"
-    private var list = ArrayList<Ingredient>()
+    private var list = emptyList<Ingredient>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -36,7 +37,7 @@ class IngredientsAdapter : RecyclerView.Adapter<IngredientsAdapter.ViewHolder>()
         }
     }
 
-    fun updateList(data: ArrayList<Ingredient>) {
+    fun updateList(data: List<Ingredient>) {
         list = data
     }
 }

@@ -3,7 +3,6 @@ package com.hasancbngl.recepiapp.mvvm
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hasancbngl.recepiapp.model.Recipe
-import com.hasancbngl.recepiapp.network.RecipeClient
 import com.hasancbngl.recepiapp.repository.RecipeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -12,10 +11,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RecipeViewModel @Inject constructor(
-    private
-    val repository: RecipeRepository
+    private val repository: RecipeRepository
 ) : ViewModel() {
-    val list = MutableLiveData<ArrayList<Recipe>>()
+    val list = MutableLiveData<List<Recipe>>()
     private val disposable = CompositeDisposable()
     var recipe = MutableLiveData<Recipe>()
 
@@ -23,7 +21,7 @@ class RecipeViewModel @Inject constructor(
 
     fun getRecipes() {
         disposable.add(
-            repository.getRecipes().allRecipes().subscribeOn(Schedulers.io())
+            repository.allRecipes().subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.newThread()).subscribe(this::onRecipeLoaded, this::onError)
         )
     }
@@ -32,7 +30,7 @@ class RecipeViewModel @Inject constructor(
         this.recipe.postValue(recipe)
     }
 
-    private fun onRecipeLoaded(recipe: ArrayList<Recipe>) {
+    private fun onRecipeLoaded(recipe: List<Recipe>) {
         list.postValue(recipe)
     }
 

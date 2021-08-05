@@ -17,8 +17,10 @@ import com.hasancbngl.recepiapp.R
 import com.hasancbngl.recepiapp.adapter.AllRecipesAdapter
 import com.hasancbngl.recepiapp.model.Recipe
 import com.hasancbngl.recepiapp.mvvm.RecipeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_recipes.*
 
+@AndroidEntryPoint
 class RecipesFragment : Fragment(), AllRecipesAdapter.OnRecipeClicked {
 
     private val recipeViewModel: RecipeViewModel by activityViewModels()

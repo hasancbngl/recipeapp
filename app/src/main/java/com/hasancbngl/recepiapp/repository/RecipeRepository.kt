@@ -1,7 +1,9 @@
 package com.hasancbngl.recepiapp.repository
 
+import com.hasancbngl.recepiapp.network.RecipeApi
 import com.hasancbngl.recepiapp.network.RecipeClient
+import javax.inject.Inject
 
-class RecipeRepository(val client: RecipeClient) {
-    fun getRecipes() = client.api
+class RecipeRepository @Inject constructor(val client: RecipeClient) {
+    fun getRecipes(): RecipeApi = client.api()
 }

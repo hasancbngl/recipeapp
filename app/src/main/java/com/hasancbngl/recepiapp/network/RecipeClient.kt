@@ -1,16 +1,27 @@
 package com.hasancbngl.recepiapp.network
 
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
+import javax.inject.Singleton
 
-object RecipeClient {
-    private const val BASE_URL = "http://mobile.asosservices.com/sampleapifortest/"
-    val retrofit =
+@Module
+@InstallIn(ActivityComponent::class)
+class RecipeClient @Inject constructor() {
+    private val BASE_URL = "http://mobile.asosservices.com/sampleapifortest/"
+
+    @Provides
+    @Singleton
+    fun retrofitBuilder() =
         Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create()).build()
 
-    val api: RecipeApi by lazy {
-        retrofit.create(RecipeApi::class.java)
-    }
+    @Provides
+    fun api() = retrofitBuilder().create(RecipeApi::class.java)
+
 }

@@ -10,7 +10,9 @@ import androidx.lifecycle.get
 import com.hasancbngl.recepiapp.fragments.RecipesFragment
 import com.hasancbngl.recepiapp.model.Recipe
 import com.hasancbngl.recepiapp.mvvm.RecipeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
@@ -21,8 +23,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewModel.getRecipes()
-
-        //todo add hilt dependency injection
-        //recyclerview and update UI
     }
 }

@@ -5,13 +5,17 @@ import androidx.lifecycle.ViewModel
 import com.hasancbngl.recepiapp.model.Recipe
 import com.hasancbngl.recepiapp.network.RecipeClient
 import com.hasancbngl.recepiapp.repository.RecipeRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-class RecipeViewModel : ViewModel() {
+@HiltViewModel
+class RecipeViewModel @Inject constructor(
+    private
+    val repository: RecipeRepository
+) : ViewModel() {
     val list = MutableLiveData<ArrayList<Recipe>>()
-    private val client = RecipeClient
-    private val repository = RecipeRepository(client)
     private val disposable = CompositeDisposable()
     var recipe = MutableLiveData<Recipe>()
 

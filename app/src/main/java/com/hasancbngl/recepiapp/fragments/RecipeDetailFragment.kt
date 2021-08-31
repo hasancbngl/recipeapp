@@ -1,5 +1,6 @@
 package com.hasancbngl.recepiapp.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -24,6 +25,7 @@ class RecipeDetailFragment : Fragment() {
     private lateinit var ingredientsAdapter: IngredientsAdapter
     private lateinit var instructionsAdapter: InstructionsAdapter
     private val TAG = "RecipeDetailFragment"
+    private var mContext : Context? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +48,7 @@ class RecipeDetailFragment : Fragment() {
     private fun initRecyclers(recipe: Recipe) {
         ingredientsRecycler.apply {
             ingredientsAdapter = IngredientsAdapter()
-            val manager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            val manager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
             layoutManager = manager
             adapter = ingredientsAdapter
         }
@@ -54,10 +56,20 @@ class RecipeDetailFragment : Fragment() {
 
         instrucitonsRecycler.apply {
             instructionsAdapter = InstructionsAdapter()
-            val manager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            val manager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
             layoutManager = manager
             adapter = instructionsAdapter
         }
         instructionsAdapter.updateInstructions(recipe.steps)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context.applicationContext
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        mContext = null
     }
 }

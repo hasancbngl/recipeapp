@@ -10,6 +10,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     defaultConfig {
         applicationId "com.hasancbngl.recepiapp"
         minSdkVersion 23
@@ -78,7 +82,7 @@ dependencies {
     kapt 'com.google.dagger:hilt-compiler:2.38.1'
 
     // For instrumentation tests
-    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.38.1'
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.38.1'
     kaptAndroidTest 'com.google.dagger:hilt-compiler:2.38.1'
 
     // For local unit tests
@@ -87,4 +91,5 @@ dependencies {
 
     testImplementation "org.mockito.kotlin:mockito-kotlin:3.2.0"
     testImplementation 'org.mockito:mockito-inline:2.13.0'
+    testImplementation 'android.arch.core:core-testing:1.1.1'
 }

@@ -6,7 +6,6 @@ import com.hasancbngl.recepiapp.model.Recipe
 import com.hasancbngl.recepiapp.mvvm.RecipeViewModel
 import com.hasancbngl.recepiapp.repository.RecipeRepository
 import io.reactivex.rxjava3.core.Observable
-import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -44,7 +43,7 @@ class RecipeViewModelTest {
             Recipe(
                 "chickenpie", emptyList(), emptyList(),
                 emptyList(), "url", "originalUrl"
-            ),
+            )
         )
 
         whenever(repository.allRecipes()).thenReturn(Observable.just(list))

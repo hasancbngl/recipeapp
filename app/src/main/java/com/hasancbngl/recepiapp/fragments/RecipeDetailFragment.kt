@@ -36,9 +36,10 @@ class RecipeDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         recipeViewModel.getClickedRecipe().observe(requireActivity(), { recipe ->
             run {
-                Glide.with(this).load(recipe.imageURL).into(imageView)
+                Glide.with(view).load(recipe.imageURL).into(imageView)
                 initRecyclers(recipe)
                 ingredientsTitle.text = getString(R.string.ingredients, recipe.ingredients.size)
             }

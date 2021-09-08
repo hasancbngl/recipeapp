@@ -9,7 +9,10 @@ import io.reactivex.rxjava3.core.Observable
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.mockito.Mock
+import org.mockito.Mockito
 import org.mockito.kotlin.mock
+import org.mockito.kotlin.stub
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 
@@ -46,7 +49,9 @@ class RecipeViewModelTest {
             )
         )
 
-        whenever(repository.allRecipes()).thenReturn(Observable.just(list))
+        mockObserver.stub {
+            whenever(repository.allRecipes()).thenReturn(Observable.just(list))
+        }
         viewModel.list.observeForever(mockObserver)
         viewModel.getRecipes()
         verify(mockObserver).onChanged(list)
